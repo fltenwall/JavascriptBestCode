@@ -170,3 +170,33 @@ for (let i = 0; i < arr.length; i++) {
 // good
 const newArray = arr.filter(n => n > 3);
 ```
+
+12.Array-map 数组批量处理
+```javascript
+const arr = [1, 2, 3, 4, 5];
+
+// bad
+const newArr = [];
+for (let i = 0;i < arr.length;i++){
+	newArr.push(arr[i] + 1);
+}
+
+// good
+const newArr = arr.map(n => n + 1);
+```
+
+13.使用箭头函数代替嵌套函数
+
+```javascript
+const arr = [1, 2, 3, 4, 5];
+
+// bad
+function isInculdes(n, arr) {
+	return arr.includes(function (num) {
+		return n === num;
+	})
+}
+
+// good
+let isInculdes = (n, arr) => arr.inculdes(num => num === n);
+```
