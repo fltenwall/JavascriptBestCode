@@ -200,3 +200,50 @@ function isInculdes(n, arr) {
 // good
 let isInculdes = (n, arr) => arr.inculdes(num => num === n);
 ```
+
+14.Array-forEach 数组批量处理，不返回新数组
+```javascript
+const arr = [1, 2, 3, 4, 5];
+
+// bad
+for (let i=0;i < arr.length;i++) {
+	++arr[i];
+}
+
+// good
+arr.forEach((item, index) => ++arr[index] );
+```
+
+15.Object.values快速获取对象键值
+```javascript
+const obj = {
+	name : 'flten',
+	age : 24,
+}
+
+// bad
+const values = [];
+for (key in obj) {
+	values.push(obj[key]);
+};
+
+// good
+const values = Object.values(obj);
+```
+
+16.Object.keys快速获取对象键名
+```javascript
+const obj = {
+	name : 'flten',
+	age : 24,
+}
+
+// bad
+const keys = [];
+for (key in obj) {
+	keys.push(key);
+};
+
+// good
+const keys = Object.keys(obj);
+```
