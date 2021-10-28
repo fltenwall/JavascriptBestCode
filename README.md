@@ -371,3 +371,67 @@ obj[key] = 'javascript';
 // good 不额外创建变量
 obj[`lang${index}`] = 'javascript';
 ```
+
+24.特定的变量说明
+```javascript
+// bad
+if (value.length < 8) { // 容易产生疑惑，8代表什么呢？
+    ....
+}
+
+// good
+const MAX_INPUT_LENGTH = 8;
+if (value.length < MAX_INPUT_LENGTH) { // 常量名说明，明确表示是不能超过都最大输入长度
+    ....
+}
+```
+
+25.函数传参说明
+```javascript
+// 这样的传参无法让人知道true和false代表什么
+page.getSVG(api, true, false);
+
+// good
+page.getSVG({
+    imageApi: api,
+    isIncludePageBackground: true, 
+    isCompress: false,
+})
+```
+
+26.switch代替if..else
+```javascript
+
+// 分支过多
+if (a === 1) {
+    ...
+} else if (a === 2) {
+    ...
+} else if (a === 3) {
+    ...
+} else {
+   ...
+}
+
+// good
+switch(a) {
+   case 1:
+           ....
+   case 2:
+           ....
+   case 3:
+           ....
+  default:
+       ....
+}
+
+// best
+let handler = {
+    1: () => {....},
+    2: () => {....}.
+    3: () => {....},
+    default: () => {....}
+}
+
+handler[n]() || handler['default']()
+```
