@@ -435,3 +435,26 @@ let handler = {
 
 handler[n]() || handler['default']()
 ```
+
+27.使用Object.is()判断两个值是否相等
+```javascript
+// bad 使用 ==
+"" == false // true == 运算符在判断相等前对两边的变量(如果它们不是同一类型)进行强制转换,应该避免使用
+
+// good 使用 === 
++0 === -0 // true ===比==好一点，但是将数字 -0 和 +0 视为相等 
+NaN === NaN //  false 将Number.NaN 与NaN视为不相等
+
+// best 使用Object.is()，会正确的判断两个值是否为同一个值
+Object.is(+0, -0) // false
+Object.is(NaN, NaN) // true
+```
+
+28.使用数字分隔符
+```javascript
+// bad 数字太长时候能看出来这是多少吗？
+const num = 1000000000; 
+
+// good 使用数字分割符就清晰很多了
+const num = 1_000_000_000;
+```
