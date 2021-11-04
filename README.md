@@ -1,6 +1,8 @@
 # JavascriptBestCode 给你最好的javascript代码！
 
-1.通过条件判断给变量赋布尔值
+## Javascript最佳实践
+
+### 1.通过条件判断给变量赋布尔值
 
 ```javascript
 // bad
@@ -17,7 +19,7 @@ b = a === 'a';
 b = (a === 'a');
 ```
 
-2.使用三元表达式代替if判断
+### 2.使用三元表达式代替if判断
 ```javascript
 // bad
 if (a === 'a') {
@@ -34,7 +36,7 @@ b = (a === 'a' ? a :c);
 
 ```
 
-3.使用“短路”的特性设置默认值(或者为数据兜底，不至于为undefined)
+### 3.使用“短路”的特性设置默认值(或者为数据兜底，不至于为undefined)
 ```javascript
 const obj = {
 	name : 'flten',
@@ -53,7 +55,7 @@ let name = obj.name || 'wall';
 let name = obj.name ?? 'wall';
 ```
 
-4.使用可选链
+### 4.使用可选链
 ```javascript
 const obj = {
 	name : 'flten',
@@ -73,7 +75,7 @@ let city = obj.address && obj.address.city;
 let city = obj?.address?.city;
 ```
 
-5.解构设置默认值防止报错
+### 5.解构设置默认值防止报错
 ```javascript
 const obj = {
 	name : 'flten',
@@ -90,7 +92,7 @@ let {name = 'wall', age = 24} = obj;
 let {name = 'wall', age = 24} = obj || {};
 ```
 
-6.使用解构取得数据，而不是直接接收一个对象
+### 6.使用解构取得数据，而不是直接接收一个对象
 ```javascript
 // bad
 getData (data) {
@@ -105,7 +107,7 @@ getData ({name = 'flten', age = 24}) {
 };
 ```
 
-7.解构时可以重命名简化变量名
+### 7.解构时可以重命名简化变量名
 ```javascript
 // bad
 getData ({this_is_name = 'flten', this_is_age = 24}) {
@@ -120,7 +122,7 @@ getData ({this_is_name : name = 'flten', this_is_age : age = 24}) {
 };
 ```
 
-8.交换两个数据
+### 8.交换两个数据
 
 ```javascript
 let num1 = 10, num2 = 20;
@@ -134,7 +136,7 @@ b = temp;
 [a, b] = [b, a];
 ```
 
-9.Array-inculdes 判断元素是否满足某条件
+### 9.Array-inculdes 判断元素是否满足某条件
 ```javascript
 let a = 1;
 
@@ -151,7 +153,7 @@ if (arr.includes(a)) {
 
 ```
 
-10.Array-some 判断元素是否满足某条件
+### 10.Array-some 判断元素是否满足某条件
 ```javascript
 const arr = [1, 2, 3, 4, 5];
 
@@ -167,7 +169,7 @@ function hasNumber(n, arr){
 let hasNumber = (n, arr) => arr.some(num => num === n);
 ```
 
-11.Array-filter 过滤原数组，返回所有符合条件项组成的数组
+### 11.Array-filter 过滤原数组，返回所有符合条件项组成的数组
 ```javascript
 const arr = [1, 2, 3, 4, 5];
 
@@ -180,14 +182,14 @@ for (let i = 0; i < arr.length; i++) {
 // good
 const newArray = arr.filter(n => n > 3);
 ```
-12.Array-find 查找一个值，找到符合条件的项，就不会继续遍历数组
+### 12.Array-find 查找一个值，找到符合条件的项，就不会继续遍历数组
 ```javascript
 const arr = [1, 2, 3, 4, 5];
 
 const result = arr.find( item =>{ return item === 3} ); // 3
 ```
 
-13.Array-map 数组批量处理
+### 13.Array-map 数组批量处理
 ```javascript
 const arr = [1, 2, 3, 4, 5];
 
@@ -201,7 +203,7 @@ for (let i = 0;i < arr.length;i++){
 const newArr = arr.map(n => n + 1);
 ```
 
-14.使用箭头函数代替嵌套函数
+### 14.使用箭头函数代替嵌套函数
 
 ```javascript
 const arr = [1, 2, 3, 4, 5];
@@ -217,7 +219,7 @@ function isInculdes(n, arr) {
 let isInculdes = (n, arr) => arr.inculdes(num => num === n);
 ```
 
-15.Array-forEach 数组批量处理，不返回新数组
+### 15.Array-forEach 数组批量处理，不返回新数组
 ```javascript
 const arr = [1, 2, 3, 4, 5];
 
@@ -230,7 +232,7 @@ for (let i=0;i < arr.length;i++) {
 arr.forEach((item, index) => ++arr[index] );
 ```
 
-16.Object.values快速获取对象键值
+### 16.Object.values快速获取对象键值
 ```javascript
 const obj = {
 	name : 'flten',
@@ -247,7 +249,7 @@ for (key in obj) {
 const values = Object.values(obj);
 ```
 
-17.Object.keys快速获取对象键名
+### 17.Object.keys快速获取对象键名
 ```javascript
 const obj = {
 	name : 'flten',
@@ -264,7 +266,7 @@ for (key in obj) {
 const keys = Object.keys(obj);
 ```
 
-18.数组合并
+### 18.数组合并
 ```javascript
 const a = [1, 2, 3];
 const b = [3, 5, 6];
@@ -277,7 +279,7 @@ const c = a.concat(b); // [1,2,3,3,5,6]
 const c = [...new Set([...a, ...b])]; // [1,2,3,5,6]
 ```
 
-19.对象合并
+### 19.对象合并
 ```javascript
 const obj1 = {a:1,};
 const obj2 = {b:2,};
@@ -289,7 +291,7 @@ const obj3 = Object.assign({},obj1,obj2); // {a:1, b:2}
 const obj3 = {...obj1, ...obj2}; // {a:1, b:2}
 ```
 
-20.善于使用模板字符串
+### 20.善于使用模板字符串
 ```javascript
 const name = 'flten';
 const age = 24;
@@ -307,7 +309,7 @@ if (age > 18){
 result = `${name}${age > 18 ? '成年了' : '还未成年'}`;
 ```
 
-21.数组扁平化
+### 21.数组扁平化
 ```javascript
 const deps = {
     'a':[1,2,3],
@@ -323,7 +325,7 @@ let res = [Object.values(deps).flat(Infinity)]; // [1, 2, 3, 3, 4, 5, 5, 6, 7, 7
 let res = [...new Set(Object.values(deps).flat(Infinity))]; // [1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 
-22.异步函数使用async await，而不是嵌套
+### 22.异步函数使用async await，而不是嵌套
 ```javascript
 const fn1 = () =>{
   return new Promise((resolve, reject) => {
@@ -359,7 +361,7 @@ const fn = async () =>{
 }
 ```
 
-23.使用表达式添加对象属性
+### 23.使用表达式添加对象属性
 ```javascript
 let obj = {};
 let order = 1;
@@ -372,7 +374,7 @@ obj[key] = 'javascript';
 obj[`lang${index}`] = 'javascript';
 ```
 
-24.特定的变量说明
+### 24.特定的变量说明
 ```javascript
 // bad
 if (value.length < 8) { // 容易产生疑惑，8代表什么呢？
@@ -386,7 +388,7 @@ if (value.length < MAX_INPUT_LENGTH) { // 常量名说明，明确表示是不�
 }
 ```
 
-25.函数传参说明
+### 25.函数传参说明
 ```javascript
 // 这样的传参无法让人知道true和false代表什么
 page.getSVG(api, true, false);
@@ -399,7 +401,7 @@ page.getSVG({
 })
 ```
 
-26.switch代替if..else
+### 26.switch代替if..else
 ```javascript
 
 // 分支过多
@@ -436,7 +438,7 @@ let handler = {
 handler[n]() || handler['default']()
 ```
 
-27.使用Object.is()判断两个值是否相等
+### 27.使用Object.is()判断两个值是否相等
 ```javascript
 // bad 使用 ==
 "" == false // true == 运算符在判断相等前对两边的变量(如果它们不是同一类型)进行强制转换,应该避免使用
@@ -450,7 +452,7 @@ Object.is(+0, -0) // false
 Object.is(NaN, NaN) // true
 ```
 
-28.使用数字分隔符
+### 28.使用数字分隔符
 ```javascript
 // bad 数字太长时候能看出来这是多少吗？
 const num = 1000000000; 
@@ -458,7 +460,8 @@ const num = 1000000000;
 // good 使用数字分割符就清晰很多了
 const num = 1_000_000_000;
 ```
-29.控制台打印的 hack 技能
+## hack技能
+### 29.控制台打印的 hack 技能
 `console.log()`的hack技能
 ```javascript
 const name = 'flten';
@@ -530,8 +533,9 @@ console.count('fltenwall'); // 3
 console.count('fltenwall'); // 4
 console.count('fltenwall'); // 5
 ```
+## 有用的代码
 
-30.事件监听
+### 30.事件监听
 ```javascript
 // 如果添加的事件监听器只运行一次，可以使用 once 选项
 element.addEventListener('click', () => console.log('flten'), {
@@ -539,14 +543,14 @@ element.addEventListener('click', () => console.log('flten'), {
 });           
 ```
 
-31.获取鼠标位置
+### 31.获取鼠标位置
 ```javascript
 document.addEventListener('mousemove', (e) => {
     console.log(`Mouse X: ${e.clientX}, Mouse Y: ${e.clientY}`);
 });
 ```
 
-32.获取 html 元素的属性数据
+### 32.获取 html 元素的属性数据
 ```html
 <div id="user" data-name="flten" data-age="24">
     ...
@@ -560,4 +564,21 @@ document.addEventListener('mousemove', (e) => {
     console.log(user.dataset.name); // "flten"
     console.log(user.dataset.age); // "24"
 </script>     
+```
+
+### 33.判断当前浏览器是不是移动浏览器
+```javscript
+// true 表示移动浏览器
+const isPhoneBrower = navigator.userAgent.includes('AppleWebKit');
+```
+
+### 34.禁止复制和粘贴
+```javascript
+const forbidCopyPaste = document.getElementById('forbidArea');
+forbidCopyPaste.oncopy = () => { return false };
+forbidCopyPaste.onpaste = () => { return false };
+```
+
+```html
+<input type="text" id="forbidCopyPaste" />
 ```
