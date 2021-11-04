@@ -458,8 +458,8 @@ const num = 1000000000;
 // good 使用数字分割符就清晰很多了
 const num = 1_000_000_000;
 ```
-
-29.`console.log()`的hack技能
+29.控制台打印的 hack 技能
+`console.log()`的hack技能
 ```javascript
 const name = 'flten';
 
@@ -470,7 +470,65 @@ console.log(name); // 'flten'
 console.log({name}); // {name: 'flten'}
 
 // 设置打印的样式 %c 是标识符，需要加的
-console.log(`%c{name}`,'color:red;font-size:24px'); // 效果很神奇
+console.log(`%c ${name}`,'color:red;font-size:24px'); // 效果很神奇
+```
+
+`console.table`
+```javascript
+const obj = {
+  a : 'a',
+  b : 'b'
+};
+
+// 最普通的方式
+console.log(obj); // {a: 'a', b: 'b'}
+// 使用console.table 你会在控制台得到一个表格
+console.table(obj); 
+
+// 更好是示例
+// 来源于忘记出处的公众号
+const users = [ 
+   { 
+      "first_name":"Harcourt",
+      "last_name":"Huckerbe",
+      "gender":"Male",
+      "city":"Linchen",
+      "birth_country":"China"
+   },
+   { 
+      "first_name":"Allyn",
+      "last_name":"McEttigen",
+      "gender":"Male",
+      "city":"Ambelókipoi",
+      "birth_country":"Greece"
+   },
+   { 
+      "first_name":"Sandor",
+      "last_name":"Degg",
+      "gender":"Male",
+      "city":"Mthatha",
+      "birth_country":"South Africa"
+   }
+]
+console.table(users, ['first_name', 'last_name', 'city']);
+```
+
+`console.assert()` 断言输出
+```javascript
+const age = 24;
+
+// 只有条件为false时，才会输出
+console.assert(age > 30, "老了..."); // Assertion failed: 老了...
+console.assert(age > 18, "成年了..."); // undefined
+```
+
+`console.count()` 统计打印的次数
+```javascript
+console.count('fltenwall'); // 1
+console.count('fltenwall'); // 2
+console.count('fltenwall'); // 3
+console.count('fltenwall'); // 4
+console.count('fltenwall'); // 5
 ```
 
 30.事件监听
@@ -490,18 +548,16 @@ document.addEventListener('mousemove', (e) => {
 
 32.获取 html 元素的属性数据
 ```html
-<div id="user" data-name="flten" data-age="24" data-something="Some Data">
-    John Doe
+<div id="user" data-name="flten" data-age="24">
+    ...
 </div>
 
 <script>
     const user = document.getElementById('user');
   
-    console.log(user.dataset); 
-    // { name: "flten", age: "24", something: "Some Data" }
+    console.log(user.dataset); // { name: "flten", age: "24" }
   
     console.log(user.dataset.name); // "flten"
     console.log(user.dataset.age); // "24"
-    console.log(user.dataset.something); // "Some Data"
 </script>     
 ```
