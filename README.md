@@ -458,3 +458,50 @@ const num = 1000000000;
 // good 使用数字分割符就清晰很多了
 const num = 1_000_000_000;
 ```
+
+29.`console.log()`的hack技能
+```javascript
+const name = 'flten';
+
+// 最普通的
+console.log(name); // 'flten'
+
+// 使用变量包装，可以打印出变量名和变量值
+console.log({name}); // {name: 'flten'}
+
+// 设置打印的样式 %c 是标识符，需要加的
+console.log(`%c{name}`,'color:red;font-size:24px'); // 效果很神奇
+```
+
+30.事件监听
+```javascript
+// 如果添加的事件监听器只运行一次，可以使用 once 选项
+element.addEventListener('click', () => console.log('flten'), {
+    once: true
+});           
+```
+
+31.获取鼠标位置
+```javascript
+document.addEventListener('mousemove', (e) => {
+    console.log(`Mouse X: ${e.clientX}, Mouse Y: ${e.clientY}`);
+});
+```
+
+32.获取 html 元素的属性数据
+```html
+<div id="user" data-name="flten" data-age="24" data-something="Some Data">
+    John Doe
+</div>
+
+<script>
+    const user = document.getElementById('user');
+  
+    console.log(user.dataset); 
+    // { name: "flten", age: "24", something: "Some Data" }
+  
+    console.log(user.dataset.name); // "flten"
+    console.log(user.dataset.age); // "24"
+    console.log(user.dataset.something); // "Some Data"
+</script>     
+```
