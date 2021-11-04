@@ -53,7 +53,7 @@ let name = obj.name || 'wall';
 let name = obj.name ?? 'wall';
 ```
 
-4.
+4.使用可选链
 ```javascript
 const obj = {
 	name : 'flten',
